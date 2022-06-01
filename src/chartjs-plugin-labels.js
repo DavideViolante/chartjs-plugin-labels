@@ -445,15 +445,14 @@
       if (!SUPPORTED_TYPES[chart.config.type]) {
         return;
       }
-      if (!Array.isArray(options)) {
-        options = [options];
+      if (!chart.config._config.options.plugins.labels) {
+        return;
       }
-      const count = options.length;
-      if (!chart._labels || count !== chart._labels.length) {
-        chart._labels = options.map(function () {
-          return new Label();
-        });
-      }
+    if (!options.length) options = [options] 
+    const count = options.length;
+    chart._labels = options.map(function () {
+      return new Label();
+    });
       let someOutside = false, maxPadding = 0;
       for (let i = 0; i < count; ++i) {
         const label = chart._labels[i];
@@ -475,6 +474,9 @@
       if (!SUPPORTED_TYPES[chart.config.type]) {
         return;
       }
+      if (!chart._labels) {
+        return;
+      }
       chart._labels.forEach(function (label) {
         label.args[args.index] = args;
       });
@@ -483,12 +485,18 @@
       if (!SUPPORTED_TYPES[chart.config.type]) {
         return;
       }
+      if (!chart._labels) {
+        return;
+      }
       chart._labels.forEach(function (label) {
         label.barTotalPercentage = {};
       });
     },
     afterDatasetsDraw: function (chart) {
       if (!SUPPORTED_TYPES[chart.config.type]) {
+        return;
+      }
+      if (!chart._labels) {
         return;
       }
       chart._labels.forEach(function (label) {
