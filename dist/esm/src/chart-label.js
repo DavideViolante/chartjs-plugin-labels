@@ -18,7 +18,7 @@ var isPluginsLabelsDefined = function (options) {
     return !!((_e = (_d = chartConfig === null || chartConfig === void 0 ? void 0 : chartConfig.options) === null || _d === void 0 ? void 0 : _d.plugins) === null || _e === void 0 ? void 0 : _e.labels);
 };
 export var PLUGIN_ID = 'labels';
-export var chartLabelPlugin = {
+export var getChartLabelPlugin = function () { return ({
     id: PLUGIN_ID,
     beforeDatasetsUpdate: function (chart, args, options) {
         if (!isAllowedType(chart.config.type) || !isPluginsLabelsDefined(options)) {
@@ -78,7 +78,7 @@ export var chartLabelPlugin = {
             label.render();
         });
     }
-};
+}); };
 var ChartLabel = (function () {
     function ChartLabel() {
     }

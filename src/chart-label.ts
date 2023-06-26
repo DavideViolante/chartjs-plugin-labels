@@ -44,7 +44,7 @@ const isPluginsLabelsDefined = (options: any): boolean => {
 };
 
 export const PLUGIN_ID: string = 'labels';
-export const chartLabelPlugin: ChartComponentLike = {
+export const getChartLabelPlugin = (): ChartComponentLike => ({
   id: PLUGIN_ID,
   beforeDatasetsUpdate: function (chart: any, args: any, options: any): void {
     if (!isAllowedType(chart.config.type) || !isPluginsLabelsDefined(options)) {
@@ -103,7 +103,7 @@ export const chartLabelPlugin: ChartComponentLike = {
       label.render();
     });
   },
-};
+});
 
 export class ChartLabel {
   chart: Chart;

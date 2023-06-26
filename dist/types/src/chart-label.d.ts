@@ -1,6 +1,6 @@
 import Chart, { ChartComponentLike } from 'chart.js/auto';
 export declare const PLUGIN_ID: string;
-export declare const chartLabelPlugin: ChartComponentLike;
+export declare const getChartLabelPlugin: () => ChartComponentLike;
 export declare class ChartLabel {
     chart: Chart;
     ctx: any;
