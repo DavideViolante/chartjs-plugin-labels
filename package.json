@@ -1,15 +1,18 @@
 {
   "name": "chart.js-plugin-labels-dv",
-  "version": "4.0.0",
+  "version": "4.3.0",
   "description": "Chart.js plugin to display labels on pie, doughnut and polar area chart.",
   "main": "src/chartjs-plugin-labels.js",
   "scripts": {
     "build": "rollup -c",
+    "build:ts": "tsc",
+    "build:final": "tsc --project tsconfig.esm.json & tsc --project tsconfig.cjs.json",
     "lint": "eslint ./"
   },
   "peerDependencies": {
-    "chart.js": "^4.2.1"
+    "chart.js": "4.3.0"
   },
+  "types": "./dist/types/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/DavideViolante/chartjs-plugin-labels.git"
@@ -29,6 +32,7 @@
   "devDependencies": {
     "eslint": "^8.36.0",
     "rollup": "^2.79.1",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup-plugin-terser": "^7.0.2",
+    "typescript": "4.6.4"
   }
 }

@@ -18,5 +18,5 @@
         "quotes": ["error", "single"],
         "semi": "error"
     },
-    "ignorePatterns": ["**/dist/*"]
+    "ignorePatterns": ["**/dist/*", "src/*.ts"]
 }

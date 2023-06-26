@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "module": "ES2022",
+    "noImplicitAny": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "allowJs": true,
+    "outDir": "dist/esm",
+    "moduleResolution": "Node",
+    "declaration": true,
+    "declarationDir": "dist/types"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "**/*.test.js"]
+}
