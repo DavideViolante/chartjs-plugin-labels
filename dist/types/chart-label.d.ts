@@ -1,0 +1,36 @@
+import Chart, { ChartComponentLike } from 'chart.js/auto';
+export declare const PLUGIN_ID: string;
+export declare const chartLabelPlugin: ChartComponentLike;
+export declare class ChartLabel {
+    chart: Chart;
+    ctx: any;
+    args: any;
+    percentage: any;
+    totalPercentage: any;
+    barTotalPercentage: any;
+    total: any;
+    barTotal: any;
+    options: any;
+    labelBounds: any;
+    constructor();
+    setup(chart: Chart, options: any): void;
+    private render;
+    private renderToDataset;
+    private renderToElement;
+    private renderLabel;
+    private renderBaseLabel;
+    private renderArcLabel;
+    private shouldRenderToElement;
+    private getLabel;
+    private getFontColor;
+    private getPercentage;
+    private getRenderInfo;
+    private getBaseRenderInfo;
+    private getArcRenderInfo;
+    private getBarRenderInfo;
+    private outsideInRange;
+    private drawable;
+    private measureLabel;
+    private loadImage;
+    private isChartType;
+}
