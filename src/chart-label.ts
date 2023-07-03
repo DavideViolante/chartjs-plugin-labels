@@ -17,6 +17,11 @@ interface LabelMetrics {
   height: number;
 }
 
+interface RenderInfo {
+  x: number;
+  y: number;
+}
+
 enum LabelPosition {
   OUTSIDE = 'outside',
   BORDER = 'border',
@@ -26,7 +31,7 @@ enum LabelPosition {
 type BooleanMap = { [id: string]: boolean };
 type ChartWithCircumference = 'pie' | 'doughnut';
 
-const EMPTY_LINE_SEPARATOR: string = '\n';
+const EMPTY_LINE_SEPARATOR = '\n';
 const SUPPORTED_TYPES: ChartType[] = ['pie', 'doughnut', 'polarArea', 'bar'];
 const SUPPORTED_TYPES_MAP: BooleanMap = SUPPORTED_TYPES.reduce(
   (acc: BooleanMap, id: ChartType) => {
@@ -43,7 +48,7 @@ const isPluginsLabelsDefined = (options: any): boolean => {
   return !!chartConfig?.options?.plugins?.labels;
 };
 
-export const PLUGIN_ID: string = 'labels';
+export const PLUGIN_ID = 'labels';
 export const getChartLabelPlugin = (): ChartComponentLike => ({
   id: PLUGIN_ID,
   beforeDatasetsUpdate: function (chart: any, args: any, options: any): void {
@@ -59,8 +64,8 @@ export const getChartLabelPlugin = (): ChartComponentLike => ({
         return new ChartLabel();
       });
     }
-    let someOutside: boolean = false;
-    let maxPadding: number = 0;
+    let someOutside = false;
+    let maxPadding = 0;
     for (let i = 0; i < count; ++i) {
       const label: ChartLabel = chart._labels[i];
       label.setup(chart, options[i]);
@@ -117,8 +122,6 @@ export class ChartLabel {
   options: any;
   labelBounds: any;
 
-  constructor() {}
-
   public setup(chart: Chart, options: any): void {
     this.chart = chart;
     this.ctx = chart.ctx;
@@ -135,7 +138,7 @@ export class ChartLabel {
         fontStyle: chartOptions.font ? chartOptions.font.style : 'normal',
         fontFamily: chartOptions.font
           ? chartOptions.font.family
-          : "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
+          : '\'Helvetica Neue\', \'Helvetica\', \'Arial\', sans-serif',
         shadowOffsetX: 3,
         shadowOffsetY: 3,
         shadowColor: 'rgba(0,0,0,0.3)',
@@ -262,7 +265,7 @@ export class ChartLabel {
       ctx.textBaseline = 'middle';
       ctx.textAlign = 'left';
 
-      let max: number = 0;
+      let max = 0;
       const lines: string[] = label.split(EMPTY_LINE_SEPARATOR);
       const widths: number[] = [];
       const offset: number =
@@ -438,8 +441,7 @@ export class ChartLabel {
       this.options.position === LabelPosition.OUTSIDE ||
       this.options.position === LabelPosition.BORDER
     ) {
-      let renderInfo = {};
-      let rangeFromCentre;
+      let rangeFromCentre: number;
       const view = element;
       const centreAngle =
         view.startAngle + (view.endAngle - view.startAngle) / 2;
@@ -453,14 +455,13 @@ export class ChartLabel {
           innerRadius +
           this.options.textMargin;
       }
-      renderInfo = {
+      const renderInfo: RenderInfo = {
         x: view.x + Math.cos(centreAngle) * rangeFromCentre,
         y: view.y + Math.sin(centreAngle) * rangeFromCentre,
       };
       if (this.options.position === LabelPosition.OUTSIDE) {
         const offset: number =
           this.options.textMargin + this.measureLabel(label).width / 2;
-        // @ts-ignore
         renderInfo.x += renderInfo.x < view.x ? -offset : offset;
       }
       return renderInfo;
