@@ -1,5 +1,16 @@
 # Change Log
 
+## v5.0.0 / 2023-07-03
+### Added
+- Angular support with usage example
+
+### Changed
+- Add support for Chart.js v4.3 !BREAKING
+- TypeScript refactoring of the initial plugin source
+- TypeScript eslint support
+- Extracted `ChartLabel` – this holds a large chunk of the initial logic
+- Extracted `getChartLabelPlugin()` method – which can be used to register chart plugin
+
 ## v3.0.0 / 2021-05-26
 ### Added
 - Add support for Chart.js v3
