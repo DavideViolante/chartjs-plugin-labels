@@ -181,14 +181,21 @@ async created() {
 ### Angular
 You would need to create your own chart component.
 
-`chart.component.html`
+`html`
 ```
 <div class="chart">
   <canvas [id]="name"></canvas>
 </div>
 ```
 
-`chart.component.ts`
+`ts`
+
+Importing should be straightforward
+```
+import Chart from 'chart.js/auto';
+import { getChartLabelPlugin, PLUGIN_ID } from 'chart.js-plugin-labels-dv';
+```
+
 ```
 @Input() chartConfig: any;
 @Output() chartCreated: EventEmitter<Chart> = new EventEmitter<Chart>();
@@ -214,10 +221,22 @@ private hasRegisteredPlugin(): boolean {
 }
 ```
 
-Importing should be straightforward
+For fixing the module failed compilation error I have updated tsconfig as follows:
+
+`Error`
+
 ```
-import Chart from 'chart.js/auto';
-import { getChartLabelPlugin, PLUGIN_ID } from 'chart.js-plugin-labels-dv';
+Error: Module build failed (from ./node_modules/@ngtools/webpack/src/ivy/index.js):
+Error: /node_modules/chart.js-plugin-labels-dv/src/chart-label.ts is missing from the TypeScript compilation.
+Please make sure it is in your tsconfig via the 'files' or 'include' property.
+```
+
+tsconfig.json
+```
+"files": [
+  ...
+  "node_modules/chart.js-plugin-labels-ed/src/chart-label.ts"
+],
 ```
 
 Test it out with data from the official Chart.js website: https://www.chartjs.org/docs/latest/charts/doughnut.html#pie
