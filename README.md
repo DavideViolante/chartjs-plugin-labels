@@ -160,6 +160,8 @@ async created() {
 ```
 
 ### Angular
+[Codesandbox example](https://codesandbox.io/p/sandbox/chart-js-plugin-demo-fmtvxd)
+
 You would need to create your own chart component.
 ```html
 <div class="chart">
