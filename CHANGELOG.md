@@ -1,6 +1,6 @@
 # Change Log
 
-## v5.0.0 / 2023-07-03
+## v5.0.0-beta / 2023-07-03
 ### Added
 - Angular support with usage example
 
