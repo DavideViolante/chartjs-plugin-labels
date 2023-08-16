@@ -2,7 +2,7 @@
   "name": "chart.js-plugin-labels-dv",
   "version": "5.0.0-beta",
   "description": "Chart.js plugin to display labels on pie, doughnut and polar area chart.",
-  "main": "dist/esm/chart-label.js",
+  "main": "dist/esm/index.js",
   "scripts": {
     "build": "rollup -c",
     "build:ts": "tsc",
